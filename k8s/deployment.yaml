@@ -50,6 +50,7 @@ kind: Deployment
 metadata:
   name: rottenpotatoes
 spec:
+  replicas: 5
   selector:
     matchLabels:
       app: rottenpotatoes
@@ -92,7 +93,7 @@ spec:
   - port: 80
     targetPort: 5000
     nodePort: 30000
-  type: NodePort
+  type: LoadBalancer
 
 
 
