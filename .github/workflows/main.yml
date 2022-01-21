@@ -32,4 +32,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           # Password or personal access token used to log against the Docker registry
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-         
+      
+      - name: Docker Build and Push
+        uses: docker/build-push-action@v2.8.0
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: |
+            vcolofati/rotten-potatoes:latest
+            vcolofati/rotten-potatoes:v${{ github.run_number }}
